@@ -26,6 +26,15 @@
 @font-face {
   font-family: 'Inter';
   font-style:  normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("https://rsms.me/inter/font-files/Inter-SemiBold.woff2?v=3.19") format("woff2"),
+       url("https://rsms.me/inter/font-files/Inter-SemiBold.woff?v=3.19") format("woff");
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
   font-weight: 700;
   font-display: swap;
   src: url("https://rsms.me/inter/font-files/Inter-Bold.woff2?v=3.19") format("woff2"),
@@ -42,7 +51,7 @@ html {
   --color-200: #80cbc4;
   --color-100: #e0f2f1;
   --color-50: #e8eaf6;
-  --color-10: #f0f2fe; /* doesn't exist in MD, added 8 to each RGB from 50 */
+  --color-10: #f0fef9;
   --gray-300: #e0e0e0;
   --gray-50: #e0f2f1;
 
@@ -64,6 +73,19 @@ html {
   --app-footer-bg: var(--app-header-bg);
   --app-footer-color: var(--color-100);
   --app-footer-color-light: var(--color-10);
+
+  --app-selection-bg: var(--color-800);
+  --app-selection-color: white;
+}
+
+::selection {
+  background-color: var(--app-selection-bg);
+  color: var(--app-selection-color);
+}
+
+* {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
 body,
@@ -74,8 +96,6 @@ html {
 body {
   display: flex;
   flex-direction: column;
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
-    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   margin: 0;
   /* Prevent pull to refresh */
   overscroll-behavior: none;
@@ -93,6 +113,7 @@ body {
 header {
   background-color: var(--app-header-bg);
   color: var(--app-header-color);
+  padding: 5px 25px 10px;
 }
 
 header {
@@ -100,29 +121,34 @@ header {
 }
 
 header h1 {
-  font-size: x-large;
+  font-size: 18px;
+  font-weight: 600;
   margin: 0;
-  padding: 4px 14px 0;
+  padding: 5px 0 5px 0px;
 }
 
 /********************
  * Menu items
  *******************/
 
+.menubar {
+  display: flex;
+  gap: 20px;
+}
+
 button[disabled] {
   opacity: 0.5;
 }
 
 .menuContainer {
-  display: inline-block;
   position: relative;
 }
 
 .menuContainer > button {
   background-color: inherit;
   color: inherit;
-  min-width: 48px;
-  padding: 4px 16px;
+  padding: 6px 0px 6px 0px;
+  text-align: left;
 }
 
 body.altKey .kbdShortcut {
@@ -141,7 +167,7 @@ body.altKey .kbdShortcut {
 
 .menuContainer .menuItemContainer {
   background-color: var(--app-menu-bg);
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 8px 18px 8px #56aca42e;
   min-width: 180px;
   position: absolute;
   z-index: 1;
@@ -151,7 +177,7 @@ body.altKey .kbdShortcut {
   background-color: var(--app-menu-bg);
   color: var(--app-menu-color);
   display: block;
-  padding: 16px;
+  padding: 14px;
   text-align: left;
   width: 100%;
 }
@@ -190,11 +216,10 @@ textarea {
   background-color: var(--app-editor-bg);
   border: none;
   box-sizing: border-box;
+  caret-color: var(--color-700);
   display: flex;
   align-self: center;
   flex-grow: 1;
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
-    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   padding: 50px 15%;
   resize: none;
   white-space: pre;
@@ -210,7 +235,7 @@ textarea:focus {
 }
 
 body.monospace textarea {
-  font-family: monospace;
+  font-family: "Menlo", "Consolas", "Roboto Mono", "Ubuntu Monospace", "Noto Mono", "Oxygen Mono", "Liberation Mono", monospace, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 body.wordwrap textarea {
@@ -236,7 +261,7 @@ body.wordwrap textarea {
 details {
   background-color: var(--app-footer-bg);
   color: var(--app-footer-color);
-  padding: 16px;
+  padding: 12px;
 }
 
 details summary {
@@ -261,6 +286,7 @@ details #not-supported {
 
 details a,
 details a:visited {
+  text-decoration-color: var(--color-200);
   color: var(--app-footer-color-light);
 }
 

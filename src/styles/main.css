@@ -15,7 +15,7 @@
  */
 
 @font-face {
-  font-family: 'Inter';
+  font-family: "Inter";
   font-style:  normal;
   font-weight: 400;
   font-display: swap;
@@ -24,7 +24,7 @@
 }
 
 @font-face {
-  font-family: 'Inter';
+  font-family: "Inter";
   font-style:  normal;
   font-weight: 600;
   font-display: swap;
@@ -33,7 +33,7 @@
 }
 
 @font-face {
-  font-family: 'Inter';
+  font-family: "Inter";
   font-style:  normal;
   font-weight: 700;
   font-display: swap;
@@ -83,6 +83,11 @@ html {
   color: var(--app-selection-color);
 }
 
+details>*::selection, details>*>*::selection {
+  background-color: var(--app-selection-color); /* invert the colors */
+  color: var(--app-selection-bg);
+}
+
 * {
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
@@ -94,12 +99,12 @@ html {
 }
 
 body {
+  -webkit-font-smoothing: antialiased;
+  background-color: white;
   display: flex;
   flex-direction: column;
   margin: 0;
-  /* Prevent pull to refresh */
   overscroll-behavior: none;
-  -webkit-font-smoothing: antialiased;
 }
 
 .hidden {
@@ -113,7 +118,11 @@ body {
 header {
   background-color: var(--app-header-bg);
   color: var(--app-header-color);
+  display: flex;
+  align-items: center;
+  gap: 15px;
   padding: 5px 25px 10px;
+  z-index: 1;
 }
 
 header {
@@ -127,13 +136,28 @@ header h1 {
   padding: 5px 0 5px 0px;
 }
 
-/********************
- * Menu items
- *******************/
+/****************************
+ * Navigation + menu items
+ ***************************/
+
+img {
+  width: 40px;
+  aspect-ratio: 1 / 1;
+  vertical-align: bottom;
+}
+
+@media screen and (max-width: 900px) {
+  img {
+    display: none;
+  }
+
+  header {
+    padding: 5px 0px 10px;
+  }
+}
 
 .menubar {
   display: flex;
-  gap: 20px;
 }
 
 button[disabled] {
@@ -147,9 +171,15 @@ button[disabled] {
 .menuContainer > button {
   background-color: inherit;
   color: inherit;
-  padding: 6px 0px 6px 0px;
   text-align: left;
+  padding: 6px 10px 6px;
+  transition: background-color .12s ease-out;
 }
+
+button#butFile {
+  margin-left: -8px;
+}
+
 
 body.altKey .kbdShortcut {
   text-decoration: underline;
@@ -176,26 +206,20 @@ body.altKey .kbdShortcut {
 .menuContainer .menuItemContainer button {
   background-color: var(--app-menu-bg);
   color: var(--app-menu-color);
-  display: block;
+  display: flex;
   padding: 14px;
   text-align: left;
   width: 100%;
+  justify-content: space-between;
 }
 
 .menuContainer kbd {
-  float: right;
-  font-family: inherit;
+  font-family: "Menlo", "Consolas", "Roboto Mono", "Ubuntu Monospace", "Noto Mono", "Oxygen Mono", "Liberation Mono", monospace, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
-.menuContainer > button:hover,
-.menuContainer > button:focus,
-.menuContainer > button[aria-expanded="true"] {
+.menuContainer > button:hover {
+  border-radius: 4px;
   background-color: var(--app-menu-selected);
-}
-
-.menuItemContainer button:hover,
-.menuItemContainer button:focus {
-  background-color: var(--app-menu-bg-highlight);
 }
 
 .menuContainer button[aria-checked="true"] {
@@ -220,7 +244,7 @@ textarea {
   display: flex;
   align-self: center;
   flex-grow: 1;
-  padding: 50px 15%;
+  padding: 20px;
   resize: none;
   white-space: pre;
   width: 100%;
@@ -232,6 +256,44 @@ textarea[disabled] {
 
 textarea:focus {
   outline: none;
+}
+
+.left {
+    position: fixed;
+    background-color: var(--app-menu-color);
+    left: 0;
+    height: 100%;
+}
+
+.right {
+    position: fixed;
+    background-color: var(--app-menu-color);
+    right: 0;
+    height: 100%;
+}
+
+@media screen and (min-width: 901px) {
+  textarea {
+    padding: 40px 25%;
+  }
+
+  .left {
+      width: 140px;
+  }
+
+  .right {
+      width: 140px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .left {
+      width: 250px;
+  }
+
+  .right {
+      width: 250px;
+  }
 }
 
 body.monospace textarea {
@@ -261,7 +323,8 @@ body.wordwrap textarea {
 details {
   background-color: var(--app-footer-bg);
   color: var(--app-footer-color);
-  padding: 12px;
+  padding: 12px 25px;
+  z-index: 1;
 }
 
 details summary {

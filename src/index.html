@@ -64,100 +64,101 @@
     <link rel="stylesheet" href="/styles/main.css" inline>
     <link rel="stylesheet" href="/styles/standalone.css" inline>
     <link rel="stylesheet" media="print" href="/styles/print.css" inline>
-
-    <!-- Origin Trial Token NFS API v1 (expires 2020-05-12) -->
-    <meta http-equiv="origin-trial" content="ApP5hRHS+dIxGdu/1psSHsErxROE+aVFGqdUwBgrcsGuwWDpPo3iqanpH3EdEie7YHhBN0LL1sdkT89waJPbzwsAAABkeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZWNocm9tZWxhYnMuZ2l0aHViLmlvOjQ0MyIsImZlYXR1cmUiOiJOYXRpdmVGaWxlU3lzdGVtIiwiZXhwaXJ5IjoxNTg5MzI3OTk5fQ==">
-    <!-- Origin Trial Token NFS API v2 (expires 2020-05-25) -->
-    <meta http-equiv="origin-trial" content="AouXz9/sqzYGRIFkw8KK0QXp0HOo99+Pg8NAr/4pRA1pAlaTeQ6BngqqkBUzfjvxzPcRf15pmieR4RDhJB9bKwAAAABleyJvcmlnaW4iOiJodHRwczovL2dvb2dsZWNocm9tZWxhYnMuZ2l0aHViLmlvOjQ0MyIsImZlYXR1cmUiOiJOYXRpdmVGaWxlU3lzdGVtMiIsImV4cGlyeSI6MTU5MDQxNzc1NX0=">
   </head>
   <body class="wordwrap">
     <header>
-      <h1>
-        <span id="headerFileName">Text Editor</span><span id="modifiedHeader" class="hidden">*</span>
-        <span id="headerAppName" class="hidden"> — Text Editor</span>
-      </h1>
-      <nav class="menubar">
-        <div id="menuFile" class="menuContainer">
-          <button id="butFile" class="menuTop" aria-label="File" aria-haspopup="true" aria-expanded="false">
-            <span class="kbdShortcut">F</span>ile
-          </button>
-          <div role="menu" class="menuItemContainer hidden">
-            <button id="butNew" type="button" role="menuitem">
-              New <kbd>^N</kbd>
+      <div>
+        <img src="images/logo.svg" alt="Logo" loading="lazy">
+      </div>
+      <div>
+        <h1>
+          <span id="headerFileName">Untitled Document</span><span id="modifiedHeader" class="hidden">*</span>
+          <span id="headerAppName" class="hidden"></span>
+        </h1>
+        <nav class="menubar">
+          <div id="menuFile" class="menuContainer">
+            <button id="butFile" class="menuTop" aria-label="File" aria-haspopup="true" aria-expanded="false">
+              <span class="kbdShortcut">F</span>ile
             </button>
-            <button id="butOpen" type="button" role="menuitem">
-              Open <kbd>^O</kbd>
+            <div role="menu" class="menuItemContainer hidden">
+              <button id="butNew" type="button" role="menuitem">
+                New <kbd>^N</kbd>
+              </button>
+              <button id="butOpen" type="button" role="menuitem">
+                Open <kbd>^O</kbd>
+              </button>
+              <button id="butSave" type="button" role="menuitem">
+                Save <kbd>^S</kbd>
+              </button>
+              <button id="butSaveAs" type="button" role="menuitem">
+                Save As <kbd>^&uparrow;S</kbd>
+              </button>
+              <button id="butClose" type="button" role="menuitem">
+                Close <kbd>^W</kbd>
+              </button>
+            </div>
+          </div>
+          <div id="menuRecent" class="menuContainer">
+            <button id="butRecent" class="menuTop" aria-label="Recent" aria-haspopup="true" aria-expanded="false">
+              <span class="kbdShortcut">R</span>ecent
             </button>
-            <button id="butSave" type="button" role="menuitem">
-              Save <kbd>^S</kbd>
+            <div id="recentContainer" role="menu" class="menuItemContainer hidden">
+            </div>
+          </div>
+          <div id="menuEdit" class="menuContainer">
+            <button id="butEdit" class="menuTop" aria-label="Edit" aria-haspopup="true" aria-expanded="false">
+                <span class="kbdShortcut">E</span>dit
             </button>
-            <button id="butSaveAs" type="button" role="menuitem">
-              Save As <kbd>^&uparrow;S</kbd>
+            <div role="menu" class="menuItemContainer hidden">
+              <button id="butCut" type="button" role="menuitem">
+                Cut <kbd>^X</kbd>
+              </button>
+              <button id="butCopy" type="button" role="menuitem">
+                Copy <kbd>^C</kbd>
+              </button>
+              <button id="butPaste" type="button" role="menuitem">
+                Paste <kbd>^V</kbd>
+              </button>
+            </div>
+          </div>
+          <div id="menuView" class="menuContainer">
+            <button id="butView" class="menuTop" aria-label="View" aria-haspopup="true" aria-expanded="false">
+                <span class="kbdShortcut">V</span>iew
             </button>
-            <button id="butClose" type="button" role="menuitem">
-              Close <kbd>^W</kbd>
+            <div role="menu" class="menuItemContainer hidden">
+              <button id="butWordWrap" type="button" aria-checked="true" role="menuitemcheckbox">
+                Word Wrap
+              </button>
+              <button id="butMonospace" type="button" aria-checked="false" role="menuitemcheckbox">
+                Monospace Font
+              </button>
+              <button id="butCaptureTabs" type="button" aria-checked="true" role="menuitemcheckbox">
+                Capture Tabs <kbd>^&uparrow;M</kbd>
+              </button>
+              <button id="butFontBigger" type="button" role="menuitem">
+                Increase Font Size
+              </button>
+              <button id="butFontSmaller" type="button" role="menuitem">
+                Decrease Font Size
+              </button>
+            </div>
+          </div>
+          <div id="menuInstall" class="menuContainer">
+            <button id="butInstall" aria-label="Install" class="menuTop hidden">
+                <span class="kbdShortcut">I</span>nstall
             </button>
           </div>
-        </div>
-        <div id="menuRecent" class="menuContainer">
-          <button id="butRecent" class="menuTop" aria-label="Recent" aria-haspopup="true" aria-expanded="false">
-            <span class="kbdShortcut">R</span>ecent
-          </button>
-          <div id="recentContainer" role="menu" class="menuItemContainer hidden">
-          </div>
-        </div>
-        <div id="menuEdit" class="menuContainer">
-          <button id="butEdit" class="menuTop" aria-label="Edit" aria-haspopup="true" aria-expanded="false">
-              <span class="kbdShortcut">E</span>dit
-          </button>
-          <div role="menu" class="menuItemContainer hidden">
-            <button id="butCut" type="button" role="menuitem">
-              Cut <kbd>^X</kbd>
-            </button>
-            <button id="butCopy" type="button" role="menuitem">
-              Copy <kbd>^C</kbd>
-            </button>
-            <button id="butPaste" type="button" role="menuitem">
-              Paste <kbd>^V</kbd>
-            </button>
-          </div>
-        </div>
-        <div id="menuView" class="menuContainer">
-          <button id="butView" class="menuTop" aria-label="View" aria-haspopup="true" aria-expanded="false">
-              <span class="kbdShortcut">V</span>iew
-          </button>
-          <div role="menu" class="menuItemContainer hidden">
-            <button id="butWordWrap" type="button" aria-checked="true" role="menuitemcheckbox">
-              Word Wrap
-            </button>
-            <button id="butMonospace" type="button" aria-checked="false" role="menuitemcheckbox">
-              Monospace Font
-            </button>
-            <button id="butCaptureTabs" type="button" aria-checked="true" role="menuitemcheckbox">
-              Capture Tabs <kbd>^&uparrow;M</kbd>
-            </button>
-            <button id="butFontBigger" type="button" role="menuitem">
-              Increase Font Size
-            </button>
-            <button id="butFontSmaller" type="button" role="menuitem">
-              Decrease Font Size
-            </button>
-          </div>
-        </div>
-        <div id="menuInstall" class="menuContainer">
-          <button id="butInstall" aria-label="Install" class="menuTop hidden">
-              <span class="kbdShortcut">I</span>nstall
-          </button>
-        </div>
-      </nav>
+        </nav>
+      </div>
     </header>
-
+    <div class="left" aria-hidden="true"></div>
+    <div class="right" aria-hidden="true"></div>
     <textarea id="textEditor" autofocus spellcheck="true" aria-label="Text Editor"></textarea>
 
     <a id="aDownloadFile" download></a>
     <input type="file" id="filePicker">
 
-    <details id="footer" class="footer">
+    <details id="footer" class="footer hidden">
       <summary>About
         <span>
           <span id="modifiedFooter" class="hidden">*</span>
@@ -183,7 +184,6 @@
         Written by <a href="https://twitter.com/petele" target="_blank">Pete LePage</a>.
       </div>
     </details>
-
     <!-- import the webpage's javascript file -->
     <!-- <script src="/inline-scripts/base.js" inline></script> -->
     <script src="/inline-scripts/idb-keyval-iife.js" inline></script>

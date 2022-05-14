@@ -29,7 +29,7 @@ const app = {
   },
   options: {
     captureTabs: true,
-    fontSize: 14,
+    fontSize: 16,
     monoSpace: false,
     wordWrap: true,
   },

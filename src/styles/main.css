@@ -78,6 +78,19 @@ html {
   --app-selection-color: white;
 }
 
+::-webkit-scrollbar {
+  background: var(--app-menu-color);
+  width: 13px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-600);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-200);
+}
+
 ::selection {
   background-color: var(--app-selection-bg);
   color: var(--app-selection-color);
@@ -186,8 +199,9 @@ body.altKey .kbdShortcut {
   font-size: 16px;
 }
 
-.menuContainer button:focus {
-  outline: none;
+.menuContainer button:focus-visible {
+  border-radius: inherit;
+  outline: 2px solid rgb(0 144 237/1);
 }
 
 .menuContainer .menuItemContainer {

@@ -136,10 +136,10 @@
                 Capture Tabs <kbd>^&uparrow;M</kbd>
               </button>
               <button id="butFontBigger" type="button" role="menuitem">
-                ⬆️ Font Size
+                Increase Font Size
               </button>
               <button id="butFontSmaller" type="button" role="menuitem">
-                ⬇️ Font Size
+                Decrease Font Size
               </button>
             </div>
           </div>
@@ -154,7 +154,7 @@
 
     <div class="left" aria-hidden="true"></div>
     <div class="right" aria-hidden="true"></div>
-    
+
     <textarea id="textEditor" autofocus spellcheck="true" aria-label="Text Editor"></textarea>
 
     <a id="aDownloadFile" download></a>
@@ -206,13 +206,5 @@
     <script src="/inline-scripts/load-sw.js" inline></script>
     <script src="/inline-scripts/app-install.js" inline></script>
     <script src="/inline-scripts/fallback.js" inline></script>
-    <script>
-      if (document.addEventListener) {
-          document.addEventListener('copy', function (ev) {
-            ev.clipboardData.setData('text/plain', window.getSelection());
-            ev.preventDefault();
-        });
-      }
-    </script>
   </body>
 </html>

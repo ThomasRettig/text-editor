@@ -78,16 +78,6 @@ html {
   --app-selection-color: white;
 }
 
-@keyframes growDown {
-  0% {
-    transform: scaleY(0.8);
-  }
-
-  100% {
-    transform: scaleY(1);
-  }
-}
-
 ::selection {
   background-color: var(--app-selection-bg);
   color: var(--app-selection-color);
@@ -207,8 +197,6 @@ body.altKey .kbdShortcut {
   min-width: 180px;
   position: absolute;
   z-index: 1;
-  animation: growDown 0.2s forwards;
-  transform-origin: top center;
   border-radius: 4px;
 }
 
@@ -244,6 +232,7 @@ body.altKey .kbdShortcut {
 
 .menuContainer button[aria-checked="true"] {
   background-color: var(--app-menu-toggled-bg);
+  border-radius: 0;
   color: var(--app-menu-toggled-color);
 }
 

@@ -257,8 +257,7 @@ textarea {
   resize: none;
   white-space: pre;
   width: 100%;
-  /* line numbers */
-  background: url(""); /* hack! :) */
+  background: url("foo");
   background-attachment: local;
   background-repeat: no-repeat;
 }
